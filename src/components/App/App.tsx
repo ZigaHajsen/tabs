@@ -35,6 +35,15 @@ const App: React.FC = () => {
         <div></div>
       </div>
       <div>
+        <div>
+          {jobs.map((item: any, index: number) => {
+            return (
+              <button key={item.id} onClick={() => setValue(index)}>
+                {item.company}
+              </button>
+            );
+          })}
+        </div>
         <article>
           <h3>{title}</h3>
           <h4>{company}</h4>
