@@ -17,6 +17,7 @@ import {
   JobDescription,
   JobDescriptionText,
 } from './AppStyles';
+import './AppStyles.css';
 
 const url = 'https://course-api.com/react-tabs-project';
 
@@ -69,7 +70,7 @@ const App: React.FC = () => {
           {duties.map((duty: any, index: number) => {
             return (
               <JobDescription key={index}>
-                <FaAngleDoubleRight />
+                <FaAngleDoubleRight className='job-icon' />
                 <JobDescriptionText>{duty}</JobDescriptionText>
               </JobDescription>
             );
