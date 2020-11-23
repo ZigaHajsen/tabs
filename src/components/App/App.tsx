@@ -1,5 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { FaAngleDoubleRight } from 'react-icons/fa';
+import {
+  SectionLoading,
+  Loading,
+  Section,
+  Title,
+  Experience,
+  Underline,
+  JobsCenter,
+  ButtonContainer,
+  JobButton,
+  JobInfo,
+  JobInfoTitle,
+  JobInfoCompany,
+  JobInfoDate,
+  JobDescription,
+  JobDescriptionText,
+} from './AppStyles';
+
 const url = 'https://course-api.com/react-tabs-project';
 
 const App: React.FC = () => {
@@ -20,45 +38,45 @@ const App: React.FC = () => {
 
   if (loading) {
     return (
-      <section>
-        <h1>loading...</h1>
-      </section>
+      <SectionLoading>
+        <Loading>loading...</Loading>
+      </SectionLoading>
     );
   }
 
   const { company, dates, duties, title } = jobs[value];
 
   return (
-    <section>
-      <div>
-        <h2>experience</h2>
-        <div></div>
-      </div>
-      <div>
-        <div>
+    <Section>
+      <Title>
+        <Experience>experience</Experience>
+        <Underline></Underline>
+      </Title>
+      <JobsCenter>
+        <ButtonContainer>
           {jobs.map((item: any, index: number) => {
             return (
-              <button key={item.id} onClick={() => setValue(index)}>
+              <JobButton key={item.id} onClick={() => setValue(index)}>
                 {item.company}
-              </button>
+              </JobButton>
             );
           })}
-        </div>
-        <article>
-          <h3>{title}</h3>
-          <h4>{company}</h4>
-          <p>{dates}</p>
+        </ButtonContainer>
+        <JobInfo>
+          <JobInfoTitle>{title}</JobInfoTitle>
+          <JobInfoCompany>{company}</JobInfoCompany>
+          <JobInfoDate>{dates}</JobInfoDate>
           {duties.map((duty: any, index: number) => {
             return (
-              <div key={index}>
+              <JobDescription key={index}>
                 <FaAngleDoubleRight />
-                <p>{duty}</p>
-              </div>
+                <JobDescriptionText>{duty}</JobDescriptionText>
+              </JobDescription>
             );
           })}
-        </article>
-      </div>
-    </section>
+        </JobInfo>
+      </JobsCenter>
+    </Section>
   );
 };
 
